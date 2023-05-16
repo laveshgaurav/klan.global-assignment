@@ -1,0 +1,316 @@
+@import "../../index.scss";
+.Profile_Container {
+  .Profile_Header {
+    animation: slideDown 0.5s ease-in-out;
+    width: 100%;
+    aspect-ratio: 16/3;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .Profile_Content {
+    animation: slideDown 0.5s ease-in-out;
+    margin-top: -3rem;
+    position: relative;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .Bio {
+      display: flex;
+      align-items: center;
+      .ProfileImg {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid #ffffff;
+        margin-right: 1rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .ProfileDetail {
+        h2,
+        p {
+          color: $PRIMARY_COLOR;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+
+    .Action {
+      display: flex;
+
+      button {
+        margin-right: 0.5rem;
+        white-space: nowrap;
+      }
+      .Primary {
+        @include SOLID_BUTTON;
+      }
+      .Secondary {
+        @include OUTLINE_BUTTON;
+      }
+    }
+  }
+
+  .Profile_Data {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    padding: 0 3rem;
+    .About_Container {
+      width: 45%;
+      background-color: #f5f7f8;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      height: fit-content;
+      animation: slideDown 0.5s ease-in-out;
+
+      h3 {
+        font-weight: 500;
+        color: $PRIMARY_COLOR;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: $PRIMARY_COLOR;
+        margin-bottom: 1rem;
+        line-height: 1.75;
+      }
+    }
+    .Contact_Container {
+      width: 45%;
+      background-color: #f5f7f8;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      height: fit-content;
+      animation: slideDown 0.75s ease-in-out;
+
+      h3 {
+        font-weight: 500;
+        color: $PRIMARY_COLOR;
+        margin-bottom: 0.25rem;
+      }
+      p {
+        color: $PRIMARY_COLOR;
+        margin-bottom: 1rem;
+        line-height: 1.75;
+      }
+
+      .Btn_Container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        button {
+          width: clamp(45%, 120px, 100%);
+          white-space: nowrap;
+        }
+        .Primary {
+          @include SOLID_BUTTON;
+        }
+        .Secondary {
+          @include OUTLINE_BUTTON;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+  .Profile_Container {
+    .Profile_Content {
+      margin-top: -3rem;
+      position: relative;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .Bio {
+        display: flex;
+        align-items: center;
+        .ProfileImg {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 8px solid #ffffff;
+          margin-right: 0.25rem;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+        .ProfileDetail {
+          h2,
+          p {
+            color: $PRIMARY_COLOR;
+            margin-bottom: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .Profile_Container {
+    .Profile_Header {
+      width: 100%;
+      aspect-ratio: 16/3;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .Profile_Content {
+      margin-top: -3rem;
+      position: relative;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-direction: column;
+
+      .Bio {
+        display: flex;
+        align-items: center;
+        .ProfileImg {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 8px solid #ffffff;
+          margin-right: 1rem;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+        .ProfileDetail {
+          h2,
+          p {
+            color: $PRIMARY_COLOR;
+            margin-bottom: 0.25rem;
+          }
+        }
+      }
+
+      .Action {
+        button {
+          margin-right: 0.5rem;
+        }
+        .Primary {
+          @include SOLID_BUTTON;
+        }
+        .Secondary {
+          @include OUTLINE_BUTTON;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 426px) {
+  .Profile_Container {
+    .Profile_Header {
+      aspect-ratio: 16/4;
+    }
+    .Profile_Content {
+      padding: 0 2rem;
+
+      .Bio {
+        flex-direction: column;
+        .ProfileImg {
+          width: 120px;
+          height: 120px;
+        }
+        .ProfileDetail {
+          h2,
+          p {
+            text-align: center;
+          }
+        }
+      }
+      .Action {
+        display: flex;
+        button {
+          margin-right: 0.5rem;
+          white-space: nowrap;
+        }
+        .Primary {
+          @include SOLID_BUTTON;
+        }
+        .Secondary {
+          @include OUTLINE_BUTTON;
+        }
+      }
+    }
+
+    .Profile_Data {
+      flex-direction: column;
+      padding: 0 2rem;
+      .About_Container {
+        width: 100%;
+        margin-bottom: 1rem;
+        h3 {
+          font-weight: 500;
+          color: $PRIMARY_COLOR;
+          margin-bottom: 1rem;
+        }
+        p {
+          color: $PRIMARY_COLOR;
+          margin-bottom: 1rem;
+          line-height: 1.75;
+        }
+      }
+      .Contact_Container {
+        width: 100%;
+        background-color: #f5f7f8;
+        padding: 1rem;
+        height: fit-content;
+
+        h3 {
+          font-weight: 500;
+          color: $PRIMARY_COLOR;
+          margin-bottom: 0.25rem;
+        }
+        p {
+          color: $PRIMARY_COLOR;
+          margin-bottom: 1rem;
+          line-height: 1.75;
+        }
+
+        .Btn_Container {
+          display: flex;
+          justify-content: space-between;
+          button {
+            width: 45%;
+            white-space: nowrap;
+          }
+          .Primary {
+            @include SOLID_BUTTON;
+          }
+          .Secondary {
+            @include OUTLINE_BUTTON;
+          }
+        }
+      }
+    }
+  }
+}

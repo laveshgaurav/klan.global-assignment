@@ -1,0 +1,72 @@
+// roboto fomt import
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+$PRIMARY_COLOR: #414141;
+$GREY_COLOR: #c2c2c2;
+
+// SOLID BUTTON
+
+@mixin SOLID_BUTTON {
+  background-color: $PRIMARY_COLOR;
+  color: white;
+  border: 2px solid $PRIMARY_COLOR;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  &:hover {
+    background-color: darken($PRIMARY_COLOR, 10%);
+  }
+}
+
+// OUTLINE BUTTON
+@mixin OUTLINE_BUTTON {
+  background-color: transparent;
+  color: $PRIMARY_COLOR;
+  border: 2px solid $PRIMARY_COLOR;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  &:hover {
+    background-color: $PRIMARY_COLOR;
+    color: white;
+  }
+}
+
+.SideBar_Active {
+  background-color: white;
+  left: 0% !important;
+}
+
+// slide down animation
+@keyframes slideDown {
+  0% {
+    transform: translateY(-60px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+// opacity animation
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
