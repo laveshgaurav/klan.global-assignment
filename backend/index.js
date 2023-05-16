@@ -17,12 +17,16 @@ app.use(function (req, res, next) {
 });
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
 
 // Server
-app.listen(4000, () => {
-  console.log("Server is running on port 4000");
+const PORT = process.env.PORT || 4000;
+app.listen(process.env.PORT || 4000, () => {
+  console.log(`Server is running on port ${PORT}`);
   mongoose
     .connect(
       "mongodb+srv://webmonk:webmonk@cluster0.gp38f.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
