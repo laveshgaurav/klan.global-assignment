@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import Styles from "./Page.module.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Page({ children }) {
+  // NAVIGATION
+  const navigate = useNavigate();
+
+  // STATE
   const [sidebarActive, setSidebarActive] = React.useState(false);
 
   useEffect(() => {
@@ -33,7 +38,7 @@ function Page({ children }) {
           <input type="text" placeholder="Search" />
         </div>
         <ul className={sidebarActive && "SideBar_Active"}>
-          <li>
+          <li onClick={() => navigate("/")}>
             <i className="fa-solid fa-home"></i>
             <span>Home</span>
           </li>

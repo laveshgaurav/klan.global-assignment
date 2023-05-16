@@ -67,6 +67,7 @@
     justify-content: space-between;
     align-self: flex-start;
     padding: 0 3rem;
+    margin-bottom: 1.5rem;
     .About_Container {
       width: 45%;
       background-color: #f5f7f8;
@@ -121,6 +122,9 @@
         }
       }
     }
+  }
+  .Post_Container {
+    padding: 2rem;
   }
 }
 

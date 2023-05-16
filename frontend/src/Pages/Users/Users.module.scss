@@ -1,0 +1,152 @@
+@import "../../index.scss";
+.User_Container {
+  display: flex;
+
+  .Post_Container {
+    width: 70%;
+    padding: 1.5rem;
+    h3 {
+      font-weight: 500;
+      color: $PRIMARY_COLOR;
+      margin-bottom: 1rem;
+    }
+    .Form_Container {
+      background-color: #f5f7f8;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      input {
+        width: 100%;
+        resize: none;
+        background-color: white;
+        border: none;
+        outline: none;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .Button_Container {
+        button {
+          width: 120px;
+          padding: 0.5rem 1rem;
+          height: 32px;
+          border-radius: 1rem;
+          outline: none;
+          border: none;
+          background-color: white;
+          border: 1px solid $GREY_COLOR;
+          margin-right: 1rem;
+          i {
+            margin-right: 0.5rem;
+          }
+          &:nth-child(1) {
+            i {
+              color: #00ce00;
+            }
+          }
+          &:nth-child(2) {
+            i {
+              color: #1462c7;
+            }
+          }
+          &:nth-child(3) {
+            i {
+              color: #da6518;
+            }
+          }
+        }
+      }
+    }
+  }
+  .List_Container {
+    width: 30%;
+    padding: 1.5rem;
+    h3 {
+      font-weight: 500;
+      color: $PRIMARY_COLOR;
+      margin-bottom: 1rem;
+    }
+    .User {
+      margin-bottom: 1rem;
+      background-color: #f5f7f8;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      animation: slideDown 0.5s ease-in-out;
+
+      .User_Image {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        img {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          margin-right: 1rem;
+        }
+      }
+      .Button_Container {
+        display: flex;
+        justify-content: space-between;
+        button {
+          width: 45%;
+        }
+        .Primary {
+          @include SOLID_BUTTON;
+        }
+        .Secondary {
+          @include OUTLINE_BUTTON;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .User_Container {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .Post_Container {
+      width: 100%;
+      padding: 1.5rem;
+      h3 {
+        font-weight: 500;
+        color: $PRIMARY_COLOR;
+        margin-bottom: 1rem;
+      }
+      .Form_Container {
+        background-color: #f5f7f8;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        input {
+          width: 100%;
+          resize: none;
+          background-color: white;
+          border: none;
+          outline: none;
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          margin-bottom: 1rem;
+        }
+        .Button_Container {
+          button {
+            width: 100%;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+    .List_Container {
+      width: 100%;
+      padding: 1.5rem;
+      display: flex;
+      overflow: scroll;
+      h3 {
+        display: none;
+      }
+      .User {
+        margin-right: 1rem;
+        min-width: 300px;
+      }
+    }
+  }
+}

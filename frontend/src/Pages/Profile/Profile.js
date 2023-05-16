@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Styles from "./Profile.module.scss";
 import Page from "../Page";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import Post from "../../Components/Post/Post";
 
 function Profile() {
+  // REDUX
+  const Dispatch = useDispatch();
+  const { following } = useSelector((state) => state?.App);
+
+  // NAVIGATION
+  const { id } = useParams();
+
+  // STATE
+  const [user, setUser] = React.useState({});
+  const [posts, setPosts] = React.useState([]);
+
+  // FUNCTIONS
+  const fetchData = async () => {
+    try {
+      const user = await axios.get(`http://localhost:4000/user/${id}`);
+      setUser(user?.data);
+
+      const post = await axios.get(`http://localhost:4000/post/${id}`);
+      Array.isArray(post?.data) && setPosts(post?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // USE EFFECT
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Page>
       <div className={Styles.Profile_Container}>
@@ -15,14 +48,11 @@ function Profile() {
         <div className={Styles.Profile_Content}>
           <div className={Styles.Bio}>
             <div className={Styles.ProfileImg}>
-              <img
-                src="https://images.pexels.com/photos/4009599/pexels-photo-4009599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="profile"
-              />
+              <img src={user?.profilePic} alt="profile" />
             </div>
             <div className={Styles.ProfileDetail}>
-              <h2>John Doe</h2>
-              <p>I'm a UI/UX Designer based in Bangalore</p>
+              <h2>{user?.name}</h2>
+              <p>{user?.bio}</p>
             </div>
           </div>
           <div className={Styles.Action}>
@@ -30,8 +60,13 @@ function Profile() {
               <i className="fa-solid fa-envelope"></i>
             </button>
             <button className={Styles.Secondary}>Hire Me</button>
-            <button className={Styles.Primary}>
-              <i className="fa-solid fa-plus"></i> Follow
+            <button
+              className={Styles.Primary}
+              onClick={() =>
+                Dispatch({ type: "SET_FOLLOWING", payload: user._id })
+              }
+            >
+              {following?.includes(user._id) ? "Unfollow" : "Follow"}
             </button>
           </div>
         </div>
@@ -39,31 +74,32 @@ function Profile() {
         <div className={Styles.Profile_Data}>
           <div className={Styles.About_Container}>
             <h3>About Me</h3>
-            <p>
-              UI designer with a true passion for creating visually stunning and
-              user-centered digital experiences. With over a decade of industry
-              experience, Jason has honed his skills in crafting intuitive
-              interfaces that seamlessly blend functionality and aesthetics
-            </p>
+            <p>{user?.about}</p>
           </div>
           <div className={Styles.Contact_Container}>
             <h3>Location</h3>
-            <p>Bangalore, India</p>
+            <p>{user?.location}</p>
 
             <h3>Website</h3>
-            <p>www.johndoe.com</p>
+            <p>{user?.website}</p>
 
             <h3>Phone</h3>
-            <p>+91 9876543210</p>
+            <p>{user?.phone}</p>
 
             <h3>Email</h3>
-            <p>hello@john.com</p>
+            <p>{user?.email}</p>
 
             <div className={Styles.Btn_Container}>
               <button className={Styles.Secondary}>Add to list</button>
               <button className={Styles.Primary}>Message</button>
             </div>
           </div>
+        </div>
+
+        <div className={Styles.Post_Container}>
+          {posts?.map((post, index) => (
+            <Post key={index} data={post} user={user} />
+          ))}
         </div>
       </div>
     </Page>
