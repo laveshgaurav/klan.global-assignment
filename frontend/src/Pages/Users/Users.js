@@ -29,9 +29,7 @@ function MyFeed() {
   // FUNCTIONS
   const fetchUserData = async () => {
     try {
-      const { data } = await axios.get(
-        "https://klan-global-assignment.vercel.app/post"
-      );
+      const { data } = await axios.get("http://localhost:4000/post");
       Array.isArray(data) && setPosts(data);
     } catch (error) {
       console.log(error);
@@ -88,9 +86,7 @@ function UserList() {
   // FUNCTION
   const fetchUserData = async () => {
     try {
-      const { data } = await axios.get(
-        "https://klan-global-assignment.vercel.app/user"
-      );
+      const { data } = await axios.get("http://localhost:4000/user");
       Array.isArray(data) && setUserList(data);
       console.log(data);
     } catch (error) {
