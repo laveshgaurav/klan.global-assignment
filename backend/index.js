@@ -19,14 +19,14 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
   res.send("Server is running");
 });
 // app.use("/user", userRoutes);
 // app.use("/post", postRoutes);
 
 // FETCHING ALL POSTS
-app.get("/post/", async (req, res) => {
+app.get("/api/post/", async (req, res) => {
   try {
     const posts = await postModel.find().populate("user");
     return res.json(posts);
@@ -46,7 +46,7 @@ app.post("/post/", async (req, res) => {
 });
 
 // FETCHING A POST BY ID
-app.get("/post/:id", async (req, res) => {
+app.get("/api/post/:id", async (req, res) => {
   try {
     const posts = await postModel.find({ user: req.params.id });
     return res.json(posts);
@@ -56,7 +56,7 @@ app.get("/post/:id", async (req, res) => {
 });
 
 // FETCHING ALL USERS
-app.get("/user/", async (req, res) => {
+app.get("/api/user/", async (req, res) => {
   try {
     const users = await userModel.find();
     return res.json(users);
@@ -76,7 +76,7 @@ app.post("/user/", async (req, res) => {
 });
 
 // FETCHING A USER BY ID
-app.get("/user/:id", async (req, res) => {
+app.get("/api/user/:id", async (req, res) => {
   try {
     const user = await userModel.findById(req.params.id);
     return res.json(user);
