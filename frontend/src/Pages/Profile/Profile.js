@@ -21,10 +21,10 @@ function Profile() {
   // FUNCTIONS
   const fetchData = async () => {
     try {
-      const user = await axios.get(`http://localhost:4000/user/${id}`);
+      const user = await axios.get(`http://54.164.179.221:4000/user/${id}`);
       setUser(user?.data);
 
-      const post = await axios.get(`http://localhost:4000/post/${id}`);
+      const post = await axios.get(`http://54.164.179.221:4000/post/${id}`);
       Array.isArray(post?.data) && setPosts(post?.data);
     } catch (error) {
       console.log(error);

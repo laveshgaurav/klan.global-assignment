@@ -29,7 +29,7 @@ function MyFeed() {
   // FUNCTIONS
   const fetchUserData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/post");
+      const { data } = await axios.get("http://54.164.179.221:4000/post");
       Array.isArray(data) && setPosts(data);
     } catch (error) {
       console.log(error);
@@ -86,7 +86,7 @@ function UserList() {
   // FUNCTION
   const fetchUserData = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/user");
+      const { data } = await axios.get("http://54.164.179.221:4000/user");
       Array.isArray(data) && setUserList(data);
       console.log(data);
     } catch (error) {
